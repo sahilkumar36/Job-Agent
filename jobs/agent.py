@@ -7,7 +7,7 @@ def analyze_job(job_description, user_skills):
     """
     Analyzes a job description against a user's skills using Google Gemini.
     """
-    # Initialize the LLM
+    # Initialize LLM
     llm = ChatGoogleGenerativeAI(
         model="gemini-1.5-flash", 
         google_api_key=os.getenv("GOOGLE_API_KEY")

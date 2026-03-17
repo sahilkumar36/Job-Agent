@@ -1,6 +1,7 @@
 # Job-Agent: AI-Powered Career Assistant
 
-Job-Agent is a standout portfolio piece built with **Django**, **LangChain**, and **Google Gemini AI**. It allows users to upload job descriptions and receive an instant, AI-driven analysis of how well their skills match the role.
+Job-Agent is a standout portfolio piece built with **Django**, **LangChain**, and **Google Gemini AI**. It allows users to upload job descriptions and receive an instant, AI-driven analysis of how well their skills match the role!
+
 
 ## Features
 - **Premium Dashboard:** A modern, glassmorphism-inspired UI built with Vanilla CSS.
