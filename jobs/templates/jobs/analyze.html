@@ -1,0 +1,39 @@
+{% extends 'jobs/base.html' %}
+
+{% block content %}
+<div class="animate-fade" style="max-width: 800px; margin: 0 auto;">
+    <h1>Analyze a New Job</h1>
+    <p style="color: var(--text-dim); margin-bottom: 2rem;">Paste the job description and your skills to get an AI-powered match analysis.</p>
+
+    <div class="glass-card">
+        <form method="POST">
+            {% csrf_token %}
+            
+            <label style="display: block; margin-bottom: 0.5rem;">Job Title</label>
+            <input type="text" name="title" placeholder="e.g. Senior Software Engineer" required>
+
+            <label style="display: block; margin-bottom: 0.5rem;">Company</label>
+            <input type="text" name="company" placeholder="e.g. Google, Inc." required>
+
+            <label style="display: block; margin-bottom: 0.5rem;">Job URL</label>
+            <input type="url" name="url" placeholder="https://linkedin.com/jobs/..." required>
+
+            <label style="display: block; margin-bottom: 0.5rem;">Job Description</label>
+            <textarea name="description" rows="10" placeholder="Paste the full job description here..." required></textarea>
+
+            <label style="display: block; margin-bottom: 0.5rem;">Your Skills & Profile</label>
+            <textarea name="user_skills" rows="5" placeholder="List your key skills (Python, Django, AWS, etc.)" required></textarea>
+
+            {% if error %}
+            <div style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">
+                Error: {{ error }}
+            </div>
+            {% endif %}
+
+            <button type="submit" class="btn" style="width: 100%; border-radius: 12px; height: 3.5rem; font-size: 1.1rem; margin-top: 1rem;">
+                Run AI Analysis
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
