@@ -5,9 +5,11 @@ Job-Agent is a standout portfolio piece built with **Django**, **LangChain**, an
 
 ## Features
 - **Premium Dashboard:** A modern, glassmorphism-inspired UI built with Vanilla CSS.
-- **AI Match Scoring:** Intelligent scoring (0-100%) based on semantic analysis of job requirements vs. user skills.
-- **Skill Extraction:** Automatically identifies missing and matching skills.
-- **Agentic Logic:** Uses LangChain to reason through job descriptions like a technical recruiter.
+- **AI Resume Parsing:** Upload your PDF resume; Gemini automatically extracts your skills and profile.
+- **AI Match Scoring:** Intelligent scoring (0-100%) based on semantic analysis of job requirements vs. your profile.
+- **Skill Gap Analysis:** Automatically identifies matching and missing skills with red/green highlights.
+- **AI Career Advice:** Actionable advice on how to bridge the gap for each specific job.
+- **Agentic Logic:** Uses LangChain and Gemini 1.5 Flash to reason like a technical recruiter.
 
 ## Tech Stack
 - **Backend:** Django 5.2
