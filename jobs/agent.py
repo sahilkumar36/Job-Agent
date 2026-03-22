@@ -2,7 +2,7 @@ import os
 from pypdf import PdfReader
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.output_parsers import ResponseSchema, StructuredOutputParser
+from langchain_classic.output_parsers.structured import ResponseSchema, StructuredOutputParser
 
 def extract_text_from_pdf(pdf_file):
     """
