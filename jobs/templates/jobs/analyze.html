@@ -6,7 +6,7 @@
     <p style="color: var(--text-dim); margin-bottom: 2rem;">Paste the job description and your skills to get an AI-powered match analysis.</p>
 
     <div class="glass-card">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             
             <label style="display: block; margin-bottom: 0.5rem;">Job Title</label>
@@ -21,8 +21,13 @@
             <label style="display: block; margin-bottom: 0.5rem;">Job Description</label>
             <textarea name="description" rows="10" placeholder="Paste the full job description here..." required></textarea>
 
-            <label style="display: block; margin-bottom: 0.5rem;">Your Skills & Profile</label>
-            <textarea name="user_skills" rows="5" placeholder="List your key skills (Python, Django, AWS, etc.)" required></textarea>
+            <label style="display: block; margin-bottom: 0.5rem;">Upload Resume (PDF)</label>
+            <input type="file" name="resume" accept=".pdf" style="margin-bottom: 1.5rem;">
+
+            <p style="text-align: center; color: var(--text-dim); margin-top: -1rem; margin-bottom: 1rem;">OR</p>
+
+            <label style="display: block; margin-bottom: 0.5rem;">Manually Enter Skills</label>
+            <textarea name="user_skills" rows="5" placeholder="List your key skills (Python, Django, AWS, etc.)"></textarea>
 
             {% if error %}
             <div style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">

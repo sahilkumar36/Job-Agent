@@ -12,6 +12,8 @@ class Job(models.Model):
     ai_summary = models.TextField(blank=True, null=True)
     match_score = models.IntegerField(default=0) # 0-100
     skills_found = models.JSONField(default=list, blank=True)
+    missing_skills = models.JSONField(default=list, blank=True)
+    ai_advice = models.TextField(blank=True, null=True)
     
     def __str__(self):
         return f"{self.title} at {self.company}"

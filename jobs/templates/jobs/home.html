@@ -23,14 +23,39 @@
             <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1.5rem;">
                 {{ job.ai_summary|truncatewords:30 }}
             </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                {% for skill in job.skills_found %}
-                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary); padding: 2px 10px; border-radius: 12px; font-size: 0.75rem;">
-                    {{ skill }}
-                </span>
-                {% endfor %}
+            <div style="margin-bottom: 1rem;">
+                <p style="font-size: 0.8rem; color: var(--secondary); margin-bottom: 0.25rem;">Matching Skills</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                    {% for skill in job.skills_found %}
+                    <span style="background: rgba(16, 185, 129, 0.1); color: var(--secondary); padding: 2px 10px; border-radius: 12px; font-size: 0.7rem; border: 1px solid rgba(16, 185, 129, 0.2);">
+                        {{ skill }}
+                    </span>
+                    {% endfor %}
+                </div>
             </div>
-            <a href="{{ job.url }}" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center;">View Original Link</a>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p style="font-size: 0.8rem; color: #ef4444; margin-bottom: 0.25rem;">Missing Skills</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                    {% for skill in job.missing_skills %}
+                    <span style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 2px 10px; border-radius: 12px; font-size: 0.7rem; border: 1px solid rgba(239, 68, 68, 0.2);">
+                        {{ skill }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if job.ai_advice %}
+            <div style="background: rgba(99, 102, 241, 0.05); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.85rem;">
+                <strong style="color: var(--primary); display: block; margin-bottom: 0.25rem;">💡 AI Advice</strong>
+                {{ job.ai_advice }}
+            </div>
+            {% endif %}
+
+            <div style="display: flex; gap: 1rem;">
+                <a href="{{ job.url }}" target="_blank" class="btn btn-outline" style="flex: 1; text-align: center; padding: 0.5rem;">Original Job</a>
+                <a href="#" class="btn" style="flex: 1; text-align: center; padding: 0.5rem; background: var(--glass); color: var(--text-dim); border: 1px solid var(--glass-border);">Full Analysis</a>
+            </div>
         </div>
         {% endfor %}
     </div>

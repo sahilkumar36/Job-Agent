@@ -1,7 +1,18 @@
 import os
+from pypdf import PdfReader
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain.output_parsers import ResponseSchema, StructuredOutputParser
+
+def extract_text_from_pdf(pdf_file):
+    """
+    Extracts text from a PDF file object.
+    """
+    reader = PdfReader(pdf_file)
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text()
+    return text
 
 def analyze_job(job_description, user_skills):
     """
@@ -19,6 +30,7 @@ def analyze_job(job_description, user_skills):
         ResponseSchema(name="match_score", description="An integer between 0 and 100 indicating how well the user's skills match the job."),
         ResponseSchema(name="skills_found", description="A list of relevant skills found in both the job description and user's profile."),
         ResponseSchema(name="missing_skills", description="A list of key skills mentioned in the job but missing from the user's profile."),
+        ResponseSchema(name="advice", description="Brief, actionable advice on how the user can bridge the skill gap for this specific role."),
     ]
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
     format_instructions = output_parser.get_format_instructions()
