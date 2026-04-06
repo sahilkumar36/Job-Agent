@@ -17,7 +17,13 @@
     <div class="grid">
         {% for job in jobs %}
         <div class="glass-card job-card animate-fade">
-            <div class="score-badge">{{ job.match_score }}% Match</div>
+            <div class="score-badge" style="
+                {% if job.match_score >= 80 %} background: rgba(16, 185, 129, 0.1); color: var(--secondary);
+                {% elif job.match_score >= 50 %} background: rgba(245, 158, 11, 0.1); color: #f59e0b;
+                {% else %} background: rgba(239, 68, 68, 0.1); color: #ef4444; {% endif %}
+            ">
+                {{ job.match_score }}% Match
+            </div>
             <h3>{{ job.title }}</h3>
             <p style="color: var(--secondary); margin-bottom: 1rem;">{{ job.company }}</p>
             <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1.5rem;">

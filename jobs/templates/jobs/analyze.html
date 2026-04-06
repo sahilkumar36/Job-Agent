@@ -35,10 +35,43 @@
             </div>
             {% endif %}
 
-            <button type="submit" class="btn" style="width: 100%; border-radius: 12px; height: 3.5rem; font-size: 1.1rem; margin-top: 1rem;">
-                Run AI Analysis
+            <button id="submitBtn" type="submit" class="btn" style="width: 100%; border-radius: 12px; height: 3.5rem; font-size: 1.1rem; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+                <span id="btnText">Run AI Analysis</span>
+                <div id="spinner" class="spinner" style="display: none;"></div>
             </button>
         </form>
     </div>
 </div>
+
+<style>
+    .spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+</style>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const btn = document.getElementById('submitBtn');
+        const text = document.getElementById('btnText');
+        const spinner = document.getElementById('spinner');
+        
+        btn.disabled = true;
+        text.innerText = "Analyzing with AI...";
+        spinner.style.display = "block";
+    });
+</script>
 {% endblock %}
